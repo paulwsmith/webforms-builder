@@ -1,4 +1,5 @@
-var handlebars = require('handlebars'),
+var fs = require('fs'),
+	handlebars = require('handlebars'),
 	rawTemplate = '',
 	displayTypes = 'heading,spacer,page-break,hidden-field',
 	listTypes = 'dropdown,checkbox,radio';
@@ -54,8 +55,19 @@ function build(form, fields, states, countries, success, error) {
 	success(content);
 }
 
+function setLocalTemplate() {
+	if(!fs) {
+		throw "Cannot load template without fs module.";
+	}
+	rawTemplate = fs.readFileSync(__dirname + '/partials/webform.html', 'utf8');
+}
+
 module.exports = function builder(options) {
 	rawTemplate = options.template || '';
+	if(options.localTemplate) {
+		setLocalTemplate();
+	}
+	
 	return {
 		build: build
 	};
