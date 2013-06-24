@@ -2,7 +2,9 @@ var fs = require('fs'),
 	handlebars = require('handlebars'),
 	rawTemplate = '',
 	templateOptions = {
-		show_actions: false
+		show_actions: false,
+		show_title: false,
+		submit_local: false
 	},
 	displayTypes = 'heading,spacer,page-break,hidden-field',
 	listTypes = 'dropdown,checkbox,radio';
@@ -70,7 +72,13 @@ module.exports = function builder(options) {
 	if(options.localTemplate) {
 		setLocalTemplate();
 	}
-	templateOptions.show_actions = !!options.showActions;
+	if(options.local) {
+		templateOptions.show_actions = templateOptions.show_title = templateOptions.submit_local = true;
+	} else {
+		templateOptions.show_actions = !!options.showActions;
+		templateOptions.show_title = !!options.showTitle;
+		templateOptions.submit_local = !!options.submitLocal;
+	}
 	
 	return {
 		build: build

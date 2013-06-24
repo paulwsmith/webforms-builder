@@ -1,6 +1,12 @@
+{{#if options.show_title}}
 <h1>{{form.name}}</h1>
 
-<form class="form form-horizontal" method="POST" action="/submit">
+{{/if}}
+{{#if options.submit_local}}
+<form name="webform" class="form form-horizontal" method="POST" action="/submit" submit>
+{{else}}
+<form name="webform" class="form form-horizontal">
+{{/if}}
 	<input type="hidden" name="formId" value="{{form.id}}" />
 	<input type="hidden" name="workspaceId" value="{{form.workspaceId}}" />
 	{{#fields}}
@@ -23,8 +29,8 @@
 	</div>
 	{{/unless}}
 	{{#if is_control}}
-	<div class="control-group">
-		<label for="field{{id}}" class="form-label">{{label}}</label>
+	<div class="control-group" >
+		<label for="field{{id}}" class="form-label">{{label}}{{#if required}}<span class="required">*</span>{{/if}}</label>
 		<div class="controls">
 			{{#if is-text}}
 			<span>{{description}}</span>
@@ -88,7 +94,7 @@
 	{{/if}}
 	{{/fields}}
 
-	{{#if show_actions}}
+	{{#if options.show_actions}}
 	<div class="form-actions">
 		<input type="submit" class="btn" value="Save" />
 	</div>
