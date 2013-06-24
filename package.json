@@ -1,0 +1,16 @@
+{
+	"name": "wizehive-webforms-builder",
+	"description": "WizeHive WebForms Builder",
+	"version": "0.1.0",
+	"homepage": "http://beta.wizehive.com",
+	"author": "WizeHive, Inc",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/Wizehive/webforms-builder.git"
+	},
+	"dependencies": {
+		"handlebars": ">= 1.0.12"
+	},
+	"devDependencies": {
+	}
+}

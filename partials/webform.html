@@ -1,0 +1,94 @@
+<h1>{{form.name}}</h1>
+
+<form class="form form-horizontal" method="POST" action="/submit">
+	<input type="hidden" name="formId" value="{{form.id}}" />
+	<input type="hidden" name="workspaceId" value="{{form.workspaceId}}" />
+	{{#fields}}
+	{{#unless is_control}}
+	<div>
+		{{#if is-heading}}
+		<div class="controls">
+			<h3>{{label}}</h3>
+		</div>
+		{{/if}}
+		{{#if is-spacer}}
+		<hr />
+		{{/if}}
+		{{#if is-page-break}}
+		<p></p>
+		{{/if}}
+		{{#if is-hidden-field}}
+		<input type="hidden" id="field{{id}}" name="{{name}}" value="" />
+		{{/if}}
+	</div>
+	{{/unless}}
+	{{#if is_control}}
+	<div class="control-group">
+		<label for="field{{id}}" class="form-label">{{label}}</label>
+		<div class="controls">
+			{{#if is-text}}
+			<span>{{description}}</span>
+			{{/if}}
+			{{#if is-text-input}}
+			<input type="text" id="field{{id}}" name="field{{id}}" class="input-xlarge" {{required}}/>
+			{{/if}}
+			{{#if is-text-area}}
+			<textarea id="field{{id}}" name="field{{id}}" class="input-xlarge" rows="6"></textarea>
+			{{/if}}
+			{{#if is-dropdown}}
+			<select id="field{{id}}" name="field{{id}}">
+				<option value=""></option>
+				{{#choices}}
+				<option value="{{value}}">{{label}}</option>
+				{{/choices}}
+			</select>
+			{{/if}}
+			{{#if is-checkbox}}
+			{{#choices}}
+			<label class="checkbox-label"><input type="checkbox" id="field{{../id}}" name="field{{../id}}" value="{{value}}" /> {{label}}</label>
+			{{/choices}}
+			{{/if}}
+			{{#if is-radio}}
+			{{#choices}}
+			<label class="checkbox-label"><input type="radio" id="field{{../id}}" name="field{{../id}}" value="{{value}}" /> {{label}}</label>
+			{{/choices}}
+			{{/if}}
+			{{#if is-file-upload}}
+			<input type="file" id="field{{id}}" name="field{{id}}" />
+			{{/if}}
+			{{#if is-date-picker}}
+			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" datepicker />
+			{{/if}}
+			{{#if is-state-select}}
+			<select id="field{{id}}" name="field{{id}}">
+				<option value=""></option>
+				{{#choices}}
+				<option value="{{value}}">{{label}}</option>
+				{{/choices}}
+			</select>
+			{{/if}}
+			{{#if is-country-select}}
+			<select id="field{{id}}" name="field{{id}}">
+				<option value=""></option>
+				{{#choices}}
+				<option value="{{value}}">{{label}}</option>
+				{{/choices}}
+			</select>
+			{{/if}}
+			{{#if is-year}}
+			<select id="field{{id}}" name="field{{id}}"></select>
+			{{/if}}
+			{{#if is-html}}
+			{{/if}}
+			{{#if is-calculated-field}}
+			{{/if}}
+			<span class="help-inline">{{id}}</span>
+		</div>
+	</div>
+	{{/if}}
+	{{/fields}}
+
+	<div class="form-actions">
+		<input type="submit" class="btn" value="Save" />
+	</div>
+</form>
