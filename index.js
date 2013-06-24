@@ -1,6 +1,9 @@
 var fs = require('fs'),
 	handlebars = require('handlebars'),
 	rawTemplate = '',
+	templateOptions = {
+		show_actions: false
+	},
 	displayTypes = 'heading,spacer,page-break,hidden-field',
 	listTypes = 'dropdown,checkbox,radio';
 
@@ -45,7 +48,7 @@ function build(form, fields, states, countries, success, error) {
 
 	var content = '';
 	try {
-		content = template({ form:form, fields:fields, states:states, countries:countries });
+		content = template({ form:form, fields:fields, states:states, countries:countries, options:templateOptions });
 	} catch(e) {
 		console.log('Handlebars template error: ', e);
 		error('Render error');
@@ -67,6 +70,7 @@ module.exports = function builder(options) {
 	if(options.localTemplate) {
 		setLocalTemplate();
 	}
+	templateOptions.show_actions = !!options.showActions;
 	
 	return {
 		build: build

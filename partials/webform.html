@@ -18,7 +18,7 @@
 		<p></p>
 		{{/if}}
 		{{#if is-hidden-field}}
-		<input type="hidden" id="field{{id}}" name="{{name}}" value="" />
+		<input type="hidden" id="field{{id}}" name="{{name}}" value="" ng-model="field{{id}}" />
 		{{/if}}
 	</div>
 	{{/unless}}
@@ -30,13 +30,13 @@
 			<span>{{description}}</span>
 			{{/if}}
 			{{#if is-text-input}}
-			<input type="text" id="field{{id}}" name="field{{id}}" class="input-xlarge" {{required}}/>
+			<input type="text" id="field{{id}}" name="field{{id}}" class="input-xlarge" ng-model="field{{id}}" {{required}}/>
 			{{/if}}
 			{{#if is-text-area}}
-			<textarea id="field{{id}}" name="field{{id}}" class="input-xlarge" rows="6"></textarea>
+			<textarea id="field{{id}}" name="field{{id}}" class="input-xlarge" rows="6" ng-model="field{{id}}"></textarea>
 			{{/if}}
 			{{#if is-dropdown}}
-			<select id="field{{id}}" name="field{{id}}">
+			<select id="field{{id}}" name="field{{id}}" ng-model="field{{id}}">
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}">{{label}}</option>
@@ -45,22 +45,22 @@
 			{{/if}}
 			{{#if is-checkbox}}
 			{{#choices}}
-			<label class="checkbox-label"><input type="checkbox" id="field{{../id}}" name="field{{../id}}" value="{{value}}" /> {{label}}</label>
+			<label class="checkbox-label"><input type="checkbox" id="field{{../id}}" name="field{{../id}}" value="{{value}}" ng-model="field{{../id}}" /> {{label}}</label>
 			{{/choices}}
 			{{/if}}
 			{{#if is-radio}}
 			{{#choices}}
-			<label class="checkbox-label"><input type="radio" id="field{{../id}}" name="field{{../id}}" value="{{value}}" /> {{label}}</label>
+			<label class="checkbox-label"><input type="radio" id="field{{../id}}" name="field{{../id}}" value="{{value}}" ng-model="field{{../id}}" /> {{label}}</label>
 			{{/choices}}
 			{{/if}}
 			{{#if is-file-upload}}
-			<input type="file" id="field{{id}}" name="field{{id}}" />
+			<input type="file" id="field{{id}}" name="field{{id}}" ng-model="field{{id}}" />
 			{{/if}}
 			{{#if is-date-picker}}
-			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" datepicker />
+			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" ng-model="field{{id}}" datepicker />
 			{{/if}}
 			{{#if is-state-select}}
-			<select id="field{{id}}" name="field{{id}}">
+			<select id="field{{id}}" name="field{{id}}" ng-model="field{{id}}">
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}">{{label}}</option>
@@ -68,7 +68,7 @@
 			</select>
 			{{/if}}
 			{{#if is-country-select}}
-			<select id="field{{id}}" name="field{{id}}">
+			<select id="field{{id}}" name="field{{id}}" ng-model="field{{id}}">
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}">{{label}}</option>
@@ -76,7 +76,7 @@
 			</select>
 			{{/if}}
 			{{#if is-year}}
-			<select id="field{{id}}" name="field{{id}}"></select>
+			<select id="field{{id}}" name="field{{id}}" ng-model="field{{id}}"></select>
 			{{/if}}
 			{{#if is-html}}
 			{{/if}}
@@ -88,7 +88,9 @@
 	{{/if}}
 	{{/fields}}
 
+	{{#if show_actions}}
 	<div class="form-actions">
 		<input type="submit" class="btn" value="Save" />
 	</div>
+	{{/if}}
 </form>
