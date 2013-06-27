@@ -70,15 +70,15 @@ function setLocalTemplate() {
 
 module.exports = function builder(options) {
 	rawTemplate = options.template || '';
-	if(options.localTemplate) {
-		setLocalTemplate();
-	}
 	if(options.local) {
-		templateOptions.show_actions = templateOptions.show_title = templateOptions.submit_local = true;
+		options.localTemplate = templateOptions.show_actions = templateOptions.show_title = templateOptions.submit_local = true;
 	} else {
 		templateOptions.show_actions = !!options.showActions;
 		templateOptions.show_title = !!options.showTitle;
 		templateOptions.submit_local = !!options.submitLocal;
+	}
+	if(options.localTemplate) {
+		setLocalTemplate();
 	}
 	
 	return {
