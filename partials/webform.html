@@ -30,13 +30,13 @@
 	{{/unless}}
 	{{#if is_control}}
 	<div class="control-group" >
-		<label for="field{{id}}" class="form-label">{{label}}{{#if required}}<span class="required">*</span>{{/if}}</label>
+		<label for="field{{id}}" class="form-label">{{label}}</label>
 		<div class="controls">
 			{{#if is-text}}
 			<span>{{description}}</span>
 			{{/if}}
 			{{#if is-text-input}}
-			<input type="text" id="field{{id}}" name="field{{id}}" class="input-xlarge" ng-model="field{{id}}" {{required}}/>
+			<input type="text" id="field{{id}}" name="field{{id}}" class="input-xlarge" ng-model="record.field{{id}}" {{required}} />
 			{{/if}}
 			{{#if is-text-area}}
 			<textarea id="field{{id}}" name="field{{id}}" class="input-xlarge" rows="6" ng-model="field{{id}}"></textarea>
@@ -88,7 +88,9 @@
 			{{/if}}
 			{{#if is-calculated-field}}
 			{{/if}}
-			<span class="help-inline">{{id}}</span>
+			{{#if is_required}}
+			<span class="help-inline required">required</span>
+			{{/if}}
 		</div>
 	</div>
 	{{/if}}
@@ -96,7 +98,7 @@
 
 	{{#if options.show_actions}}
 	<div class="form-actions">
-		<input type="submit" class="btn" value="Save" />
+		<input type="submit" class="btn" value="Save" ng-click="submit()" />
 	</div>
 	{{/if}}
 </form>

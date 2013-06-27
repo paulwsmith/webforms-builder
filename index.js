@@ -9,14 +9,15 @@ var fs = require('fs'),
 	displayTypes = 'heading,spacer,page-break,hidden-field',
 	listTypes = 'dropdown,checkbox,radio';
 
-function build(form, fields, states, countries, success, error) {
+function build(form, fields, states, countries, record, success, error) {
 	var template = handlebars.compile(rawTemplate);
 
 	fields.forEach(function(field) {
 		field['is-' + field.type] = true;
 		field.is_control = displayTypes.indexOf(field.type) === -1;
 		field.is_list = listTypes.indexOf(field.type) > -1;
-		field.required = field.settings.validation.required ? 'required' : '';
+		field.is_required = !!field.settings.validation.required;
+		field.required = field.is_required ? 'required' : '';
 
 		if(field.is_list) {
 			field.choices = [];
@@ -50,7 +51,7 @@ function build(form, fields, states, countries, success, error) {
 
 	var content = '';
 	try {
-		content = template({ form:form, fields:fields, states:states, countries:countries, options:templateOptions });
+		content = template({ form:form, fields:fields, states:states, countries:countries, record:record, options:templateOptions });
 	} catch(e) {
 		console.log('Handlebars template error: ', e);
 		error('Render error');
