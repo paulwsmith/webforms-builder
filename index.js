@@ -53,7 +53,7 @@ function build(form, fields, states, countries, record, success, error) {
 			field.choices = [];
 			var year = (new Date()).getYear() + 1900 + 5, end = 1901;
 			for(; year >= end; year--) {
-					field.choices.push({ label:year.toString(), value:year.toString() });
+				field.choices.push({ label:year.toString(), value:year.toString() });
 			}
 		}
 	});
