@@ -39,10 +39,10 @@
 			<span>{{description}}</span>
 			{{/if}}
 			{{#if is-text-input}}
-			<input type="text" id="field{{id}}" name="field{{id}}" class="input-xlarge" ng-model="record.field{{id}}" {{required}} />
+			<input type="text" id="field{{id}}" name="field{{id}}" class="input-xlarge" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} />
 			{{/if}}
 			{{#if is-text-area}}
-			<textarea id="field{{id}}" name="field{{id}}" class="input-xlarge" rows="6" ng-model="record.field{{id}}"></textarea>
+			<textarea id="field{{id}}" name="field{{id}}" class="input-xlarge" rows="6" placeholder="{{placeholder}}" ng-model="record.field{{id}}"></textarea>
 			{{/if}}
 			{{#if is-dropdown}}
 			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}">
@@ -66,7 +66,7 @@
 			<input type="file" id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" />
 			{{/if}}
 			{{#if is-date-picker}}
-			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" ng-model="record.field{{id}}" datepicker />
+			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" placeholder="{{placeholder}}" ng-model="record.field{{id}}" datepicker />
 			{{/if}}
 			{{#if is-state-select}}
 			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}">
