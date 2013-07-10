@@ -32,21 +32,7 @@ function build(form, fields, states, countries, record, success, error) {
 		var template = handlebars.compile(rawTemplate);
 
 		fields.forEach(function(field) {
-			field['is-' + field.type] = true;
-			field.is_control = displayTypes.indexOf(field.type) === -1;
-			field.is_list = listTypes.indexOf(field.type) > -1;
-			field.is_required = !!field.settings.validation.required;
-			field.required = field.is_required ? 'required' : '';
-			field.placeholder = field.settings.properties.placeholder || '';
-
 			behaviors.field(field);
-
-			if(field.is_list) {
-				behaviors.list(field);
-			}
-
-			if(field.type === 'year') {
-			}
 		});
 
 		var content = '';
