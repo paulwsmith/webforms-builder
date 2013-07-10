@@ -7,8 +7,6 @@ var fs = require('fs'),
 		show_title: false,
 		submit_local: false
 	},
-	displayTypes = 'heading,spacer,page-break,hidden-field',
-	listTypes = 'dropdown,checkbox,radio',
 	isPublic = true;
 
 function build(form, fields, states, countries, record, success, error) {
