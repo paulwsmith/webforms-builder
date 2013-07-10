@@ -21,9 +21,10 @@ function build(form, fields, states, countries, record, success, error) {
 
 		if(field.is_list) {
 			field.choices = [];
-			field.choices = [{ label:"Choice 1", value:1 }, { label:"Choice 2", value:2 }, { label:"Choice 3", value:3 }, { label:"Choice 4", value:4 }];
 			if(field.settings && field.settings.properties && field.settings.properties.choices) {
-				field.choices = field.settings.properties.choices;
+				field.settings.properties.choices.forEach(function(choice) {
+					field.choices.push({ label:choice, value:choice });
+				});
 			}
 		}
 
