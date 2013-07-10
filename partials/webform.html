@@ -82,7 +82,12 @@
 			</select>
 			{{/if}}
 			{{#if is-year}}
-			<select id="field{{id}}" name="field{{id}}" ng-model="field{{id}}"></select>
+			<select id="field{{id}}" name="field{{id}}" ng-model="field{{id}}">
+				<option value=""></option>
+				{{#choices}}
+				<option value="{{value}}">{{label}}</option>
+				{{/choices}}
+			</select>
 			{{/if}}
 			{{#if is-html}}
 			{{/if}}
