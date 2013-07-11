@@ -10,8 +10,8 @@
 	<input type="hidden" name="formId" value="{{form.id}}" />
 	<input type="hidden" name="workspaceId" value="{{form.workspaceId}}" />
 	{{#fields}}
+	<div class="control-group {{class}}">
 	{{#unless is_control}}
-	<div>
 		{{#if is-heading}}
 		<div class="controls">
 			<h3>{{label}}</h3>
@@ -29,23 +29,21 @@
 		{{#if is-html}}
 		{{value}}
 		{{/if}}
-	</div>
+		{{#if is-text}}
+		<span>{{description}}</span>
+		{{/if}}
 	{{/unless}}
 	{{#if is_control}}
-	<div class="control-group" >
 		<label for="field{{id}}" class="form-label">{{label}}</label>
 		<div class="controls">
-			{{#if is-text}}
-			<span>{{description}}</span>
-			{{/if}}
 			{{#if is-text-input}}
-			<input type="text" id="field{{id}}" name="field{{id}}" class="{{class}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} />
+			<input type="text" id="field{{id}}" name="field{{id}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} />
 			{{/if}}
 			{{#if is-text-area}}
-			<textarea id="field{{id}}" name="field{{id}}" class="{{class}}" rows="{{rows}}" cols="{{cols}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}"></textarea>
+			<textarea id="field{{id}}" name="field{{id}}" rows="{{rows}}" cols="{{cols}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}"></textarea>
 			{{/if}}
 			{{#if is-dropdown}}
-			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}">
+			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" size="{{size}}" {{multiple}}>
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}">{{label}}</option>
@@ -97,9 +95,12 @@
 			{{#if is_required}}
 			<span class="help-inline required">required</span>
 			{{/if}}
+			{{#if description}}
+			<div class="help-block">{{description}}</div>
+			{{/if}}
 		</div>
-	</div>
 	{{/if}}
+	</div>
 	{{/fields}}
 
 	{{#if options.show_actions}}
