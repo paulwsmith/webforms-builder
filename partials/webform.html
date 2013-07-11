@@ -10,7 +10,7 @@
 	<input type="hidden" name="formId" value="{{form.id}}" />
 	<input type="hidden" name="workspaceId" value="{{form.workspaceId}}" />
 	{{#fields}}
-	<div class="control-group {{class}}">
+	<div class="control-group {{class}}" validate="field{{id}}">
 	{{#unless is_control}}
 		{{#if is-heading}}
 		<div class="controls">
