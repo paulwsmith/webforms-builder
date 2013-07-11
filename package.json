@@ -1,7 +1,7 @@
 {
 	"name": "webforms-builder",
 	"description": "WizeHive WebForms Builder",
-	"version": "0.2.8",
+	"version": "0.3.0",
 	"homepage": "http://beta.wizehive.com",
 	"author": "WizeHive, Inc",
 	"repository": {

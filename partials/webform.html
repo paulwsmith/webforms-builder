@@ -37,13 +37,13 @@
 		<label for="field{{id}}" class="form-label">{{label}}</label>
 		<div class="controls">
 			{{#if is-text-input}}
-			<input type="text" id="field{{id}}" name="field{{id}}" class="{{inputClass}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} />
+			<input type="text" id="field{{id}}" name="field{{id}}" class="{{inputClass}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} {{validators}}/>
 			{{/if}}
 			{{#if is-text-area}}
-			<textarea id="field{{id}}" name="field{{id}}" class="{{inputClass}}" rows="{{rows}}" cols="{{cols}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}"></textarea>
+			<textarea id="field{{id}}" name="field{{id}}" class="{{inputClass}}" rows="{{rows}}" cols="{{cols}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} {{validators}}></textarea>
 			{{/if}}
 			{{#if is-dropdown}}
-			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" size="{{size}}" {{multiple}}>
+			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" size="{{size}}" {{multiple}} {{required}}>
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}">{{label}}</option>
@@ -64,10 +64,10 @@
 			<input type="file" id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" />
 			{{/if}}
 			{{#if is-date-picker}}
-			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" placeholder="{{placeholder}}" ng-model="record.field{{id}}" datepicker />
+			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" placeholder="{{placeholder}}" ng-model="record.field{{id}}" datepicker {{required}} {{validators}} />
 			{{/if}}
 			{{#if is-state-select}}
-			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}">
+			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" {{required}}>
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}">{{label}}</option>
@@ -75,7 +75,7 @@
 			</select>
 			{{/if}}
 			{{#if is-country-select}}
-			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}">
+			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" {{required}}>
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}">{{label}}</option>
@@ -83,7 +83,7 @@
 			</select>
 			{{/if}}
 			{{#if is-year}}
-			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}">
+			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" {{required}}>
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}">{{label}}</option>
