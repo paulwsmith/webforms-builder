@@ -1,6 +1,6 @@
 var fs = require('fs'),
 	handlebars = require('handlebars'),
-	behaviors = require('lib/behaviors'),
+	behaviors = require('./lib/behaviors'),
 	rawTemplate = '',
 	templateOptions = {
 		show_actions: false,
