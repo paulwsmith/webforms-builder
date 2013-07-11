@@ -37,10 +37,10 @@
 		<label for="field{{id}}" class="form-label">{{label}}</label>
 		<div class="controls">
 			{{#if is-text-input}}
-			<input type="text" id="field{{id}}" name="field{{id}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} />
+			<input type="text" id="field{{id}}" name="field{{id}}" class="{{inputClass}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} />
 			{{/if}}
 			{{#if is-text-area}}
-			<textarea id="field{{id}}" name="field{{id}}" rows="{{rows}}" cols="{{cols}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}"></textarea>
+			<textarea id="field{{id}}" name="field{{id}}" class="{{inputClass}}" rows="{{rows}}" cols="{{cols}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}"></textarea>
 			{{/if}}
 			{{#if is-dropdown}}
 			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" size="{{size}}" {{multiple}}>
