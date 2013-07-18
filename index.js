@@ -10,7 +10,7 @@ var fs = require('fs'),
 	isPublic = true;
 
 function build(form, fields, states, countries, record, success, error) {
-	var accessible = (form.isPublic || !isPublic) && form.isActive;
+	var accessible = !isPublic || (form.isPublic && form.isActive);
 	if(form.start) {
 		var start = new Date(Date.parse(form.start));
 		if(start > new Date()) {
