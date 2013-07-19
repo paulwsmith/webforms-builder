@@ -10,17 +10,21 @@ var fs = require('fs'),
 	isPublic = true;
 
 function build(form, fields, states, countries, record, success, error) {
-	var accessible = !isPublic || (form.isPublic && form.isActive);
-	if(form.start) {
-		var start = new Date(Date.parse(form.start));
-		if(start > new Date()) {
-			accessible = false;
+	var accessible = true;
+	if(isPublic) {
+		accessible = form.isPublic && form.isActive;
+
+		if(form.start) {
+			var start = new Date(Date.parse(form.start));
+			if(start > new Date()) {
+				accessible = false;
+			}
 		}
-	}
-	if(form.end) {
-		var end = new Date(Date.parse(form.end));
-		if(end < new Date()) {
-			accessible = false;
+		if(form.end) {
+			var end = new Date(Date.parse(form.end));
+			if(end < new Date()) {
+				accessible = false;
+			}
 		}
 	}
 
