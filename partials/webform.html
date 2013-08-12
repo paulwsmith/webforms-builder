@@ -9,6 +9,8 @@
 {{/if}}
 	<input type="hidden" name="formId" value="{{form.id}}" />
 	<input type="hidden" name="workspaceId" value="{{form.workspaceId}}" />
+	<input type="hidden" name="validate" value="true" />
+	<input type="hidden" name="isComplete" value="true" />
 	{{#fields}}
 	<div class="control-group {{class}}" validate="field{{id}}">
 	{{#unless is_control}}
