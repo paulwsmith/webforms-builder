@@ -1,7 +1,3 @@
-{{#if options.show_title}}
-<h1>{{form.name}}</h1>
-
-{{/if}}
 {{#if options.submit_local}}
 <form name="webform" class="form form-horizontal" method="POST" action="/submit" submit>
 {{else}}
@@ -15,7 +11,7 @@
 	<div class="control-group {{class}}" validate="field{{id}}">
 	{{#unless is_control}}
 		{{#if is-heading}}
-		<div class="controls">
+		<div class="display">
 			<h3>{{label}}</h3>
 		</div>
 		{{/if}}
@@ -28,11 +24,10 @@
 		{{#if is-hidden-field}}
 		<input type="hidden" id="field{{id}}" name="{{name}}" value="" ng-model="field{{id}}" />
 		{{/if}}
-		{{#if is-html}}
-		{{{label}}}
-		{{/if}}
 		{{#if is-text}}
-		<span>{{label}}</span>
+		<div class="display">
+			{{label}}
+		</div>
 		{{/if}}
 	{{/unless}}
 	{{#if is_control}}
