@@ -29,10 +29,10 @@
 		<input type="hidden" id="field{{id}}" name="{{name}}" value="" ng-model="field{{id}}" />
 		{{/if}}
 		{{#if is-html}}
-		{{value}}
+		{{{label}}}
 		{{/if}}
 		{{#if is-text}}
-		<span>{{description}}</span>
+		<span>{{label}}</span>
 		{{/if}}
 	{{/unless}}
 	{{#if is_control}}
