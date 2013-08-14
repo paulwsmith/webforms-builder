@@ -36,7 +36,9 @@
 		{{/if}}
 	{{/unless}}
 	{{#if is_control}}
+		{{#unless is-calculated-field}}
 		<label for="field{{id}}" class="form-label">{{label}}</label>
+		{{/unless}}
 		<div class="controls">
 			{{#if is-text-input}}
 			<input type="text" id="field{{id}}" name="field{{id}}" class="{{inputClass}}" placeholder="{{placeholder}}" ng-model="record.field{{id}}" {{required}} {{{validators}}}/>
