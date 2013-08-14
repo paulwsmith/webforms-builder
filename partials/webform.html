@@ -12,7 +12,7 @@
 	{{#unless is_control}}
 		{{#if is-heading}}
 		<div class="display">
-			<h3>{{label}}</h3>
+			<h3 style="{{getStyles ../../../form.settings.style.heading}}">{{label}}</h3>
 		</div>
 		{{/if}}
 		{{#if is-spacer}}
@@ -25,14 +25,14 @@
 		<input type="hidden" id="field{{id}}" name="{{name}}" value="" ng-model="field{{id}}" />
 		{{/if}}
 		{{#if is-text}}
-		<div class="display">
+		<div class="display" style="{{getStyles ../../../form.settings.style.font}}">
 			{{label}}
 		</div>
 		{{/if}}
 	{{/unless}}
 	{{#if is_control}}
 		{{#unless is-calculated-field}}
-		<label for="field{{id}}" class="form-label">{{label}}</label>
+		<label for="field{{id}}" class="form-label" style="{{getStyles ../../../form.settings.style.font}}">{{label}}</label>
 		{{/unless}}
 		<div class="controls">
 			{{#if is-text-input}}
@@ -66,10 +66,10 @@
 			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" placeholder="{{placeholder}}" ng-model="record.field{{id}}" datepicker {{required}} {{{validators}}} />
 			{{/if}}
 			{{#if is-state-select}}
-			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" {{required}}>
+			<select id="field{{id}}" ng-init="record.field{{id}}='US-CO'" name="field{{id}}" ng-model="record.field{{id}}" {{required}}>
 				<option value=""></option>
 				{{#choices}}
-				<option value="{{value}}">{{label}}</option>
+				<option value="{{value}}" {{#if selected}}selected="selected"{{/if}}>{{label}}</option>
 				{{/choices}}
 			</select>
 			{{/if}}
@@ -97,16 +97,17 @@
 			{{#if description}}
 			<div class="help-block">{{description}}</div>
 			{{/if}}
-			<div class="help-block" ng-show="webform.field{{id}}.$error.alpha">{{../form.invalidAlphaError}}</div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.alpha-numeric">{{../form.invalidAlphaNumError}}</div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.currency">{{../form.invalidCurrencyDollarError}}</div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.date">{{../form.invalidDateError}}</div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.date-us">{{../form.invalidDateError}}</div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.email">{{../form.invalidEmailError}}</div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.number">{{../form.invalidNumberError}}</div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.password"></div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.url">{{../form.invalidURLError}}</div>
-			<div class="help-block" ng-show="webform.field{{id}}.$error.zipcode">{{../form.invalidPostalError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.req" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.requiredFieldError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.alpha" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidAlphaError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.alpha-numeric" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidAlphaNumError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.currency" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidCurrencyDollarError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.date" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidDateError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.date-us" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidDateError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.email" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidEmailError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.number" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidNumberError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.password" style="{{getStyles ../../form.settings.style.error}}"></div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.url" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidURLError}}</div>
+			<div class="help-block" ng-show="webform.field{{id}}.$error.zipcode" style="{{getStyles ../../form.settings.style.error}}">{{../../form.settings.terminology.invalidPostalError}}</div>
 		</div>
 	{{/if}}
 	</div>

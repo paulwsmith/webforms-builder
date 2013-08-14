@@ -9,6 +9,20 @@ var fs = require('fs'),
 	},
 	isPublic = true;
 
+handlebars.registerHelper('getStyles', function(style) {
+	// e.g. pass form.settings.style.heading
+	ret = "";
+	if (style.bold) ret += "font-weight: bold;";
+	if (style.color) ret += "color: " + style.color + ";";
+	if (style.fontFace) ret += "font-face: " + style.fontFace + ";";
+	if (style.italic) ret += "font-style: italic;";
+	if (style.size) ret += "font-size: " + style.size + "pt;";
+	if (style.underline) ret += "text-decoration: underline;";
+	if (style.backgroundColor) ret += "background-color: " + style.backgroundColor + ";";
+	
+	return ret;
+});
+
 function build(form, fields, states, countries, record, success, error) {
 	var accessible = true;
 	if(isPublic) {
