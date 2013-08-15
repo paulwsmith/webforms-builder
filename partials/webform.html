@@ -67,7 +67,7 @@
 			<input type="text" id="field{{id}}" name="field{{id}}" class="input-small" placeholder="{{placeholder}}" ng-model="record.field{{id}}" datepicker {{required}} {{{validators}}} />
 			{{/if}}
 			{{#if is-state-select}}
-			<select id="field{{id}}" ng-init="record.field{{id}}='US-CO'" name="field{{id}}" ng-model="record.field{{id}}" {{required}}>
+			<select id="field{{id}}" name="field{{id}}" ng-model="record.field{{id}}" {{required}}>
 				<option value=""></option>
 				{{#choices}}
 				<option value="{{value}}" {{#if selected}}selected="selected"{{/if}}>{{label}}</option>
